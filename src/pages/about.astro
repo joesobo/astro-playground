@@ -1,16 +1,96 @@
+---
+const pageTitle = "About Me";
+
+const identity = {
+  name: "John Doe",
+  age: 30,
+  location: "New York, NY",
+  occupation: "Software Engineer",
+  hobbies: ["hiking", "reading", "writing"],
+};
+
+const skills = [
+  {
+    name: "HTML",
+    level: 5,
+  },
+  {
+    name: "CSS",
+    level: 4,
+  },
+  {
+    name: "JavaScript",
+    level: 3,
+  },
+  {
+    name: "React",
+    level: 2,
+  },
+  {
+    name: "Node",
+    level: 1,
+  },
+];
+
+const happy = true;
+const finished = true;
+const goal = 1;
+---
+
 <a href="/">Home</a>
 <a href="/about/">About</a>
 <a href="/blog/">Blog</a>
 
-<h1>About Me</h1>
+<h1>{pageTitle}</h1>
 <h2>... and my new Astro site!</h2>
 
-<p>
+<p class="mt-4">
   I am working through Astro's introductory tutorial. This is the second page on
   my website, and it's the first one I built myself!
 </p>
 
-<p>
+<p class="mt-4">
   This site will update as I complete more of the tutorial, so keep checking
   back and see how my journey is going!
 </p>
+
+<p class="mt-4">Here are a few facts about me:</p>
+<ul>
+  <li>Name: {identity.name}</li>
+  <li>Age: {identity.age}</li>
+  <li>Location: {identity.location}</li>
+  <li>Occupation: {identity.occupation}</li>
+
+  {
+    identity.hobbies.length >= 2 && (
+      <li>
+        2 of my hobbies are: {identity.hobbies[0]} & {identity.hobbies[1]}
+      </li>
+    )
+  }
+</ul>
+
+<p class="mt-4">Here are some of my skills:</p>
+<ul>
+  {
+    skills.map((skill) => (
+      <li>
+        {skill.name} - Level {skill.level}
+      </li>
+    ))
+  }
+</ul>
+
+<div class="mt-4"></div>
+
+{happy && <p>I am happy to be learning Astro!</p>}
+
+{finished && <p>I finished this tutorial!</p>}
+
+{
+  goal === 3 ? (
+    <p>My goal is to finish in 3 days.</p>
+  ) : (
+    <p>My goal is not 3 days.</p>
+  )
+}

@@ -1,18 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+
+const pageTitle = "Astro Playground";
 ---
 
 <a href="/">Home</a>
 <a href="/about/">About</a>
 <a href="/blog/">Blog</a>
 
-<Layout title="Welcome to my Astro Playground">
+<Layout title={pageTitle}>
   <main>
     <h1>Welcome to my <span class="text-gradient">Playground</span></h1>
     <ul role="list" class="link-card-grid">
       <Card
-        href="/api"
+        href="/about"
         title="API Demo"
         body="Learning how Astro worked when fetching data"
       />

@@ -34,7 +34,9 @@ const skills = [
 
 const happy = true;
 const finished = true;
-const goal = 1;
+const goal = 3;
+
+const skillColor = "blue";
 ---
 
 <a href="/">Home</a>
@@ -74,7 +76,7 @@ const goal = 1;
 <ul>
   {
     skills.map((skill) => (
-      <li>
+      <li class="text-green-500 font-bold skill">
         {skill.name} - Level {skill.level}
       </li>
     ))
@@ -94,3 +96,13 @@ const goal = 1;
     <p>My goal is not 3 days.</p>
   )
 }
+
+<style define:vars={{ skillColor }}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+  }
+</style>

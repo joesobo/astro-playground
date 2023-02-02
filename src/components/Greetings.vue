@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="my-4">
     <h3>{{ greeting }}! Thank you for visiting!</h3>
     <button @click="setGreeting(randomMessage())">New Greeting</button>
   </div>

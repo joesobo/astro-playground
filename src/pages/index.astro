@@ -1,28 +1,20 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 const pageTitle = "Astro Playground";
 ---
 
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Blog</a>
+<Header />
 
-<Layout title={pageTitle}>
-  <main>
-    <h1 class="text-black">
-      Welcome to my <span class="text-gradient">Playground</span>
-    </h1>
-    <ul role="list" class="link-card-grid">
-      <Card
-        href="/about"
-        title="API Demo"
-        body="Learning how Astro worked when fetching data"
-      />
-    </ul>
-  </main>
-</Layout>
+<h1 class="text-black">
+  {pageTitle}
+</h1>
+<Footer />
+
+<script>
+  import "../scripts/menu.js";
+</script>
 
 <style>
   main {

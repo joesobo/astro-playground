@@ -1,6 +1,5 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About Me";
 
@@ -42,74 +41,58 @@ const goal = 3;
 const skillColor = "blue";
 ---
 
-<Header />
+<BaseLayout pageTitle={pageTitle}>
+  <h1>{pageTitle}</h1>
+  <h2>... and my new Astro site!</h2>
 
-<h1>{pageTitle}</h1>
-<h2>... and my new Astro site!</h2>
+  <p class="mt-4">
+    I am working through Astro's introductory tutorial. This is the second page
+    on my website, and it's the first one I built myself!
+  </p>
 
-<p class="mt-4">
-  I am working through Astro's introductory tutorial. This is the second page on
-  my website, and it's the first one I built myself!
-</p>
+  <p class="mt-4">
+    This site will update as I complete more of the tutorial, so keep checking
+    back and see how my journey is going!
+  </p>
 
-<p class="mt-4">
-  This site will update as I complete more of the tutorial, so keep checking
-  back and see how my journey is going!
-</p>
+  <p class="mt-4">Here are a few facts about me:</p>
+  <ul>
+    <li>Name: {identity.name}</li>
+    <li>Age: {identity.age}</li>
+    <li>Location: {identity.location}</li>
+    <li>Occupation: {identity.occupation}</li>
 
-<p class="mt-4">Here are a few facts about me:</p>
-<ul>
-  <li>Name: {identity.name}</li>
-  <li>Age: {identity.age}</li>
-  <li>Location: {identity.location}</li>
-  <li>Occupation: {identity.occupation}</li>
+    {
+      identity.hobbies.length >= 2 && (
+        <li>
+          2 of my hobbies are: {identity.hobbies[0]} & {identity.hobbies[1]}
+        </li>
+      )
+    }
+  </ul>
+
+  <p class="mt-4">Here are some of my skills:</p>
+  <ul>
+    {
+      skills.map((skill) => (
+        <li class={`text-${skillColor}-300 font-bold skill`}>
+          {skill.name} - Level {skill.level}
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="mt-4"></div>
+
+  {happy && <p>I am happy to be learning Astro!</p>}
+
+  {finished && <p>I finished this tutorial!</p>}
 
   {
-    identity.hobbies.length >= 2 && (
-      <li>
-        2 of my hobbies are: {identity.hobbies[0]} & {identity.hobbies[1]}
-      </li>
+    goal === 3 ? (
+      <p>My goal is to finish in 3 days.</p>
+    ) : (
+      <p>My goal is not 3 days.</p>
     )
   }
-</ul>
-
-<p class="mt-4">Here are some of my skills:</p>
-<ul>
-  {
-    skills.map((skill) => (
-      <li class="text-green-500 font-bold skill">
-        {skill.name} - Level {skill.level}
-      </li>
-    ))
-  }
-</ul>
-
-<div class="mt-4"></div>
-
-{happy && <p>I am happy to be learning Astro!</p>}
-
-{finished && <p>I finished this tutorial!</p>}
-
-{
-  goal === 3 ? (
-    <p>My goal is to finish in 3 days.</p>
-  ) : (
-    <p>My goal is not 3 days.</p>
-  )
-}
-
-<Footer />
-
-<script>
-  import "../scripts/menu.js";
-</script>
-
-<style define:vars={{ skillColor }}>
-  h1 {
-    color: purple;
-    font-size: 4rem;
-  }
-  .skill {
-    color: var(--skillColor);
-  }
-</style>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+const { frontmatter } = Astro.props;
+---
+
+<a href="/blog/" class="text-blue-300">Back to blog</a>
+
+<h1 class="text-lg mb-4 font-bold">{frontmatter.title}</h1>
+
+<p>Written by {frontmatter.author}</p>
+<p><em>{frontmatter.description}</em></p>
+<p class="mb-4">Published on: {frontmatter.pubDate.slice(0, 10)}</p>
+
+<img
+  src={frontmatter.image.url}
+  width="300"
+  alt={frontmatter.image.alt}
+  class="mb-4"
+/>
+
+<slot />

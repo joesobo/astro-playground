@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+
 const { frontmatter } = Astro.props;
 ---
 
@@ -14,6 +15,16 @@ const { frontmatter } = Astro.props;
     alt={frontmatter.image.alt}
     class="mb-4"
   />
+
+  <div class="flex flex-wrap mx-auto">
+    {
+      frontmatter.tags.map((tag) => (
+        <p class="m-1 border-dotted border border-gray-500 rounded-sm py-1 px-2">
+          <a href={`/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </div>
 
   <slot />
 </BaseLayout>
